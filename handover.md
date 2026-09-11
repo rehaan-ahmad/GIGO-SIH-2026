@@ -27,12 +27,14 @@ The system is built as a pipeline of specialized agents:
 - **Infra**: Docker, Docker Compose.
 
 ## 📖 Documentation Suite
-The project is fully documented in the `/docs` directory:
-- **`README.md`**: Entry point and quick-start.
-- **`ARCHITECTURE.md`**: Mathematical and logic specifications.
-- **`API.md`**: REST interface and Agentic endpoints.
-- **`DEPLOYMENT.md`**: Docker and local environment setup.
-- **`USER_GUIDE.md`**: Operational guide for Railway Controllers.
+The project is fully documented using the **Diataxis framework**, ensuring coverage for tutorials, how-tos, references, and explanations in the `/docs` directory:
+
+- **Tutorials**: Getting Started, String Diagram mastery.
+- **How-tos**: Deployment, API interaction, Hermes Agent usage.
+- **Reference**: Solver constraints, AHP scoring, Hermes metrics, REST API.
+- **Explanations**: Spatio-temporal logic, AHP design, String Diagram UX, Agentic architecture.
+
+Key entry points: [`README.md`](README.md) and [`ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 ## 🏁 Final Milestone Status
 - [x] **Phase 0: Repo Setup** $\rightarrow$ Completed

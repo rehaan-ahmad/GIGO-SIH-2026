@@ -49,7 +49,7 @@ Railway maintenance requires "blocks" (portions of the track closed to traffic).
    ```
 
 3. **Access the App**
-   - 🌐 **Frontend**: `http://localhost:5173`
+   - 🌐 **Frontend**: `http://localhost` (Docker) or `http://localhost:5173` (Local Dev)
    - 🔌 **Backend API**: `http://localhost:8000`
    - 📖 **API Docs**: `http://localhost:8000/docs` (Swagger UI)
 
@@ -60,6 +60,29 @@ The system operates as a pipeline of specialized agents:
 For a deep dive into the mathematical constraints and data flow, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
 ## 📄 Documentation
-- **API Reference**: [`docs/API.md`](docs/API.md)
+
+The project follows the **Diataxis framework** for comprehensive coverage:
+
+### 🎓 Learning & Guidance
+- **Getting Started**: [`docs/tutorial-getting-started.md`](docs/tutorial-getting-started.md) — First steps to a working plan.
+- **String Diagram Guide**: [`docs/tutorial-string-diagram.md`](docs/tutorial-string-diagram.md) — Mastering the visualization.
+- **Deployment Guide**: [`docs/how-to-deploy.md`](docs/how-to-deploy.md) — Setup and infrastructure.
+- **API Usage**: [`docs/how-to-api.md`](docs/how-to-api.md) — Programmatic interaction.
+- **Hermes Orchestrator**: [`docs/how-to-use-hermes.md`](docs/how-to-use-hermes.md) — Autonomous health management.
+
+### 📚 Technical Reference
+- **Spatio-Temporal Solver**: [`docs/reference-solver.md`](docs/reference-solver.md) — Logic and constraints.
+- **AHP Scoring**: [`docs/reference-scoring.md`](docs/reference-scoring.md) — Priority calculations.
+- **Hermes Agent**: [`docs/reference-hermes.md`](docs/reference-hermes.md) — System metrics.
+- **REST API**: [`docs/reference-api.md`](docs/reference-api.md) — Endpoint specifications.
+
+### 🧠 Deep Dives & Explanations
+- **Spatio-Temporal Packing**: [`docs/explanation-spatio-temporal.md`](docs/explanation-spatio-temporal.md) — Why we use 4D space.
+- **Prioritization Logic**: [`docs/explanation-ahp-prioritization.md`](docs/explanation-ahp-prioritization.md) — Design of the scoring engine.
+- **String Diagram Design**: [`docs/explanation-string-diagram.md`](docs/explanation-string-diagram.md) — Rendering and UX.
+- **Agentic Architecture**: [`docs/explanation-agentic-pipeline.md`](docs/explanation-agentic-pipeline.md) — The pipeline philosophy.
+
+### 🛠 Legacy & High-Level
 - **Technical Architecture**: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
 - **Implementation Handover**: [`handover.md`](handover.md)
+
