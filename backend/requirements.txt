@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+ortools
+xgboost
+pandas
+pydantic
+psycopg2-binary
+sqlalchemy
+redis
+celery
+python-dotenv

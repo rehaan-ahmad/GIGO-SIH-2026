@@ -1,0 +1,75 @@
+{
+  "tasks": [
+    {
+      "task_id": "TMS-8092",
+      "dept": "Engineering",
+      "type": "Track tamping",
+      "chainage_start_km": 1042.0,
+      "chainage_end_km": 1045.5,
+      "duration_mins": 240,
+      "severity": 8,
+      "days_overdue": 5,
+      "needs_power_block": false,
+      "machinery_type": "Tamping Machine"
+    },
+    {
+      "task_id": "TDMS-441",
+      "dept": "TRD",
+      "type": "OHE Mast Repair",
+      "chainage_start_km": 1043.0,
+      "chainage_end_km": 1044.0,
+      "duration_mins": 180,
+      "severity": 7,
+      "days_overdue": 2,
+      "needs_power_block": true,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "SMMS-102",
+      "dept": "S&T",
+      "type": "Point Machine Testing",
+      "chainage_start_km": 1045.0,
+      "chainage_end_km": 1045.2,
+      "duration_mins": 120,
+      "severity": 9,
+      "days_overdue": 10,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    }
+  ],
+  "corridor_availability": [
+    {
+      "window_id": "WIN-001",
+      "date": "2026-10-15",
+      "start_time": "02:00",
+      "end_time": "06:00",
+      "freight_probability": 0.2,
+      "passenger_train_slots": ["02:30", "04:15"]
+    },
+    {
+      "window_id": "WIN-002",
+      "date": "2026-10-15",
+      "start_time": "06:00",
+      "end_time": "10:00",
+      "freight_probability": 0.6,
+      "passenger_train_slots": ["07:00", "08:30"]
+    }
+  ],
+  "train_timetable": [
+    {
+      "train_id": "EXP-124",
+      "name": "Rajdhani Exp",
+      "arrival_time": "02:45",
+      "departure_time": "02:55",
+      "chainage_km": 1043.5
+    }
+  ],
+  "freight_forecast": [
+    {
+      "train_id": "FR-990",
+      "expected_time": "07:15",
+      "buffer_mins": 120,
+      "probability": 0.7
+    }
+  ]
+}

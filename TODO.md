@@ -7,7 +7,6 @@
 ---
 
 ## PHASE 0 — REPO SETUP
-- [ ] `mkdir railway-block-planner && cd railway-block-planner`
 - [ ] `mkdir backend frontend data scripts docs`
 - [ ] Init git: `git init && touch .gitignore`
 - [ ] `.gitignore`: add `__pycache__/`, `node_modules/`, `.env`, `*.pyc`, `venv/`
