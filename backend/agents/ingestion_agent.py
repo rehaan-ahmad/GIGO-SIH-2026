@@ -1,3 +1,13 @@
+"""
+Ingestion Agent Module
+=======================
+
+This module is responsible for polling and normalizing maintenance data from
+heterogeneous railway source systems (TMS, SMMS, TDMS, and COA).
+
+It ensures that all incoming data conforms to the unified Task and Window
+Pydantic models before they are passed to the scoring and solver agents.
+"""
 import json
 import logging
 from typing import List, Dict, Any
@@ -52,8 +62,6 @@ def ingest() -> Dict[str, Any]:
             try:
                 window_obj = WindowModel(**w)
                 window_data = window_obj.model_dump()
-                # Windows with freight probability > 0.4 require a 120-minute
-                # buffer to account for stochastic freight train arrivals.
                 if window_data["freight_probability"] > 0.4:
                     window_data["buffer_mins"] = 120
                 else:

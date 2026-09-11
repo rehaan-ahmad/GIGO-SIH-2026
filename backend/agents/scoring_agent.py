@@ -1,3 +1,11 @@
+"""
+Scoring Agent Module
+====================
+
+This module implements the criticality scoring logic for railway maintenance tasks.
+It uses an Analytic Hierarchy Process (AHP) weighted formula to prioritize tasks
+based on severity, urgency (overdue days), and estimated train delay costs.
+"""
 from typing import List, Dict, Any
 import logging
 
@@ -11,7 +19,6 @@ def score_tasks(tasks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     The criticality score C_i is calculated as:
     C_i = (w1 * Severity) + (w2 * OverdueDays) + (w3 * TrainDelayCost)
     """
-    # Weights correspond to relative priority: Severity (50%), Overdue (30%), Delay Cost (20%)
     W1 = 0.50
     W2 = 0.30
     W3 = 0.20
@@ -19,25 +26,18 @@ def score_tasks(tasks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     scored_tasks = []
 
     for task in tasks:
-        # TrainDelayCost is currently estimated as a function of duration and severity.
-        # This serves as a placeholder for a predictive XGBoost model.
         train_delay_cost = (task.get("duration_mins", 0) / 60) * (task.get("severity", 1) / 2)
 
         score = (W1 * task.get("severity", 0)) + \
                 (W2 * task.get("days_overdue", 0)) + \
                 (W3 * train_delay_cost)
 
-        # S&T signal failures are safety-critical and receive a 1.5x priority boost.
         if task.get("dept") == "S&T":
             score *= 1.5
 
-        # Power block requirements receive a flat additive bonus to encourage
-        # co-scheduling with other power-dependent tasks.
         if task.get("needs_power_block"):
             score += 5.0
 
-        # Normalize the resulting score to a 0-100 scale for CP-SAT integer encoding.
-        # A multiplier of 4.0 is used based on the expected maximum raw score of ~25.
         normalized_score = min(100.0, score * 4.0)
 
         scored_tasks.append({

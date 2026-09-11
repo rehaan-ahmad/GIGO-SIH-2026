@@ -1,3 +1,11 @@
+"""
+Solver Agent Module
+===================
+
+This module contains the core optimization logic for the Railway Block Planner.
+It uses the Google OR-Tools CP-SAT solver to assign tasks to available time
+windows while enforcing complex spatio-temporal safety constraints.
+"""
 from typing import List, Dict, Any, Tuple
 from ortools.sat.python import cp_model
 import logging
@@ -19,7 +27,6 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
 
     model = cp_model.CpModel()
 
-    # Binary decision variables: 1 if task t is assigned to window w, else 0.
     assign = {}
     for t in scored_tasks:
         t_id = t["task_id"]
@@ -27,12 +34,10 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
             w_id = w["window_id"]
             assign[(t_id, w_id)] = model.NewBoolVar(f"assign_{t_id}_{w_id}")
 
-    # Constraint C1: Every task must be scheduled exactly once.
     for t in scored_tasks:
         t_id = t["task_id"]
         model.AddExactlyOne(assign[(t_id, w["window_id"])] for w in corridor_windows)
 
-    # Constraint C2: Total task duration in any window must not exceed the window's capacity.
     for w in corridor_windows:
         w_id = w["window_id"]
         start_h, start_m = map(int, w["start_time"].split(":"))
@@ -44,9 +49,6 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
             <= window_duration
         )
 
-    # Constraint C3: Spatial Deconfliction.
-    # Heavy machinery (duration > 120m) requires a 500m buffer to prevent hazardous proximity.
-    # We use interval overlap: max(start1, start2) <= min(end1, end2) + 0.5
     for i in range(len(scored_tasks)):
         for j in range(i + 1, len(scored_tasks)):
             t1 = scored_tasks[i]
@@ -61,7 +63,6 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
                     if t1["duration_mins"] > 120 and t2["duration_mins"] > 120:
                         model.AddImplication(assign[(t1["task_id"], w_id)], assign[(t2["task_id"], w_id)].Not())
 
-    # Constraint C4: Power Block Grouping.
     for i in range(len(scored_tasks)):
         for j in range(i + 1, len(scored_tasks)):
             t1 = scored_tasks[i]
@@ -74,7 +75,6 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
                         w_id = w["window_id"]
                         pass
 
-    # Constraint C5: Freight Buffer.
     for w in corridor_windows:
         w_id = w["window_id"]
         if w["freight_probability"] > 0.4:
@@ -82,7 +82,6 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
                 if t["duration_mins"] > 120:
                     model.Add(assign[(t["task_id"], w_id)] == 0)
 
-    # Maximize the total criticality score.
     objective = sum(
         int(t["criticality_score"] * 10) * assign[(t["task_id"], w["window_id"])]
         for t in scored_tasks
@@ -125,30 +124,11 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
                     "reason": "OPTIMAL_ASSIGNMENT"
                 })
             else:
-                # Determine the failure reason for explainability in the UI.
                 reason = "NO_VALID_WINDOW"
-
-                # Check Freight Buffer Constraint
                 if any(w["freight_probability"] > 0.4 for w in corridor_windows) and t["duration_mins"] > 120:
-                    # Verify if ALL potential windows were blocked by freight
-                    all_blocked = True
-                    for w in corridor_windows:
-                        if not (w["freight_probability"] > 0.4 and t["duration_mins"] > 120):
-                            all_blocked = False
-                            break
-                    if all_blocked:
-                        reason = "FREIGHT_BLOCKED"
-
-                # Check Spatial Conflict
-                if reason == "NO_VALID_WINDOW":
-                    for t2 in scored_tasks:
-                        if t2["task_id"] != t_id:
-                            if max(t1["chainage_start_km"], t2["chainage_start_km"]) <= \
-                               min(t1["chainage_end_km"], t2["chainage_end_km"]) + 0.5:
-                                # This is a simplified check; in reality, we'd check if
-                                # the conflicting task was actually scheduled.
-                                reason = "SPATIAL_CONFLICT"
-                                break
+                    reason = "FREIGHT_BLOCKED"
+                elif any(get_spatial_overlap(t["chainage_start_km"], t2["chainage_start_km"]) for t2 in scored_tasks if t2["task_id"] != t_id):
+                    reason = "SPATIAL_CONFLICT"
 
                 unscheduled_tasks.append({"task_id": t_id, "reason": reason})
 

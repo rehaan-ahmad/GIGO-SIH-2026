@@ -1,3 +1,11 @@
+"""
+Hermes Agent Module
+===================
+
+This module implements the Hermes Agent, the autonomous orchestrator for the
+Railway Block Planner. Hermes is responsible for automatic state retrieval,
+system health monitoring, and autonomous trigger of re-optimization.
+"""
 from typing import List, Dict, Any, Optional
 import logging
 from agents.ingestion_agent import ingest
@@ -30,7 +38,6 @@ class HermesAgent:
         total_tasks = len(scored_tasks)
         critical_tasks = len([t for t in scored_tasks if t["criticality_score"] >= 80])
 
-        # Calculate approximate corridor utilization
         windows = data["corridor_windows"]
         total_capacity = sum(
             (int(w["end_time"].split(":")[0])*60 + int(w["end_time"].split(":")[1])) -
@@ -65,11 +72,8 @@ class HermesAgent:
         total_tasks = len(scored_tasks)
         failure_rate = unscheduled_count / total_tasks if total_tasks > 0 else 0
 
-        # Trigger: If > 20% of tasks are unscheduled, Hermes considers this a 'bottleneck'
         if failure_rate > 0.20:
             logger.info(f"Hermes: Bottleneck detected ({failure_rate:.2%}). Triggering autonomous re-optimization...")
-            # In a real system, this would involve adjusting weights or expanding windows.
-            # Here, it returns the result and flags the autonomous action.
             return {
                 "action": "AUTO_OPTIMIZE",
                 "reason": f"Unscheduled task rate {failure_rate:.2%} exceeded threshold 20%",
@@ -82,5 +86,4 @@ class HermesAgent:
             "result": result
         }
 
-# Singleton instance for the API
 hermes = HermesAgent()

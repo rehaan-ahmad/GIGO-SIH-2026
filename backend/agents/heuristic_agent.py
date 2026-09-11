@@ -1,3 +1,12 @@
+"""
+Heuristic Agent Module
+======================
+
+This module implements the real-time re-optimization logic.
+Unlike the solver agent, which uses CP-SAT for global optimality,
+the Heuristic Agent uses a greedy descent algorithm to provide
+sub-500ms responses for interactive UI changes.
+"""
 from typing import List, Dict, Any
 import logging
 

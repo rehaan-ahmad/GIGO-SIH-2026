@@ -1,3 +1,12 @@
+"""
+Railway Block Planner API
+==========================
+
+This module implements the FastAPI REST interface for the Railway Block Planner.
+It exposes endpoints for system health, task retrieval, and the optimization
+pipeline (Exact and Heuristic). It also integrates the Hermes Agent for
+autonomous system management.
+"""
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -24,14 +33,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- State Cache to prevent redundant I/O ---
 class SystemState:
+    """
+    Manages the cached state of the system to prevent redundant I/O
+    and computation across concurrent API requests.
+    """
     def __init__(self):
         self.tasks = []
         self.windows = []
         self.scored_tasks = []
         self.last_updated = 0
-        self.cache_ttl = 60  # 60 seconds
+        self.cache_ttl = 60
 
     def refresh(self):
         now = time.time()
@@ -45,8 +57,6 @@ class SystemState:
         return self.tasks, self.windows, self.scored_tasks
 
 state = SystemState()
-
-# --- Pydantic Models ---
 
 class OptimizeRequest(BaseModel):
     horizon: str = "weekly"
@@ -118,7 +128,6 @@ async def get_windows():
 @app.post("/api/optimize-blocks", response_model=ScheduleResponse)
 async def optimize_blocks(req: OptimizeRequest):
     logger.info(f"Optimizing blocks: horizon={req.horizon}, mode={req.solver_mode}")
-
     _, windows, scored_tasks = state.refresh()
     result = solve(scored_tasks, windows, mode=req.solver_mode, horizon=req.horizon)
 
@@ -132,7 +141,6 @@ async def optimize_blocks(req: OptimizeRequest):
 @app.post("/api/reoptimize")
 async def reoptimize(req: ReoptimizeRequest):
     logger.info(f"Real-time re-optimization for task {req.dragged_task_id}")
-
     _, windows, scored_tasks = state.refresh()
     base_result = solve(scored_tasks, windows, mode="heuristic")
 
@@ -144,7 +152,6 @@ async def reoptimize(req: ReoptimizeRequest):
         scored_tasks=scored_tasks,
         corridor_windows=windows
     )
-
     return result
 
 @app.get("/api/schedule/{date}")
