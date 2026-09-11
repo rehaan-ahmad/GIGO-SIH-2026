@@ -8,6 +8,7 @@ from agents.ingestion_agent import ingest
 from agents.scoring_agent import score_tasks
 from agents.solver_agent import solve
 from agents.heuristic_agent import solve_heuristic as heuristic_reoptimize
+from agents.hermes_agent import hermes
 from db import init_db
 
 logging.basicConfig(level=logging.INFO)
@@ -79,6 +80,16 @@ async def startup_event():
 @app.get("/api/health")
 async def health_check():
     return {"status": "healthy", "message": "Railway Block Planner API is online"}
+
+@app.get("/api/agent/status")
+async def agent_status():
+    """Hermes Agent: Automatic retrieval of system state and health metrics."""
+    return hermes.retrieve_system_summary()
+
+@app.post("/api/agent/auto-fix")
+async def agent_auto_fix(req: OptimizeRequest):
+    """Hermes Agent: Autonomous analysis and re-optimization of the block plan."""
+    return hermes.analyze_and_auto_optimize(horizon=req.horizon)
 
 @app.post("/api/demo/load")
 async def load_demo_scenario():

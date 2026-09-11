@@ -30,6 +30,15 @@ $$C = (w_1 \cdot Severity) + (w_2 \cdot OverdueDays) + (w_3 \cdot DelayCost)$$
 - **Boosts**: S&T signal failures receive a $1.5\times$ multiplier due to safety urgency.
 
 ## 4. Data Flow Pipeline
+The system operates as a pipeline of specialized agents:
+`IngestionAgent` $\rightarrow$ `ScoringAgent` $\rightarrow$ `SolverAgent` $\rightarrow$ `API` $\rightarrow$ `UI`
+
+**The Agentic Layer (Hermes)**: 
+Wrapped around this pipeline is the `HermesAgent`. Hermes acts as the autonomous brain that can:
+- **Retrieve**: Poll the state of the pipeline to generate high-level summaries.
+- **Monitor**: Continuously check for "bottlenecks" (e.g., excessive unscheduled tasks).
+- **Act**: Trigger the `SolverAgent` autonomously when schedule health degrades.
+
 1. **Ingestion**: `IngestionAgent` polls mock systems $\rightarrow$ validates via Pydantic $\rightarrow$ normalizes to unified `Task` schema.
 2. **Scoring**: `ScoringAgent` computes $C$ for all tasks $\rightarrow$ sorts descending.
 3. **Solving**: `SolverAgent` constructs the CP-SAT model $\rightarrow$ returns optimal `Schedule`.

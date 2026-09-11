@@ -10,6 +10,22 @@ All endpoints are prefixed with `/api`. Base URL: `http://localhost:8000/api`
 
 ---
 
+## 🤖 Agentic Layer (Hermes)
+The Hermes Agent provides autonomous management and retrieval capabilities.
+
+### System Status Retrieval
+`GET /agent/status`
+- **Description**: Automatic retrieval of high-level system health, task criticality ratios, and corridor utilization.
+- **Response**: `{ "agent": "Hermes", "metrics": { "total_tasks": 60, ... }, "summary": "..." }`
+
+### Autonomous Auto-Fix
+`POST /agent/auto-fix`
+- **Description**: Triggers an autonomous analysis of the current schedule. If unscheduled task rates exceed 20%, it automatically invokes the solver to optimize the plan.
+- **Request Body**: `{ "horizon": "weekly" }`
+- **Response**: `{ "action": "AUTO_OPTIMIZE" | "MONITOR", "reason": "...", "result": { ... } }`
+
+---
+
 ## 📋 Task & Window Management
 
 ### Fetch Ranked Tasks
