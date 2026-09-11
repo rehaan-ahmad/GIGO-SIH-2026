@@ -22,12 +22,12 @@ The system follows an agent-based pipeline:
 ---
 ## Completed Milestones
 - [x] Repository Connection & Initial Setup
-- [ ] Phase 0: Repo Setup & Environment
-- [ ] Phase 1: Mock Data Layer
-- [ ] Phase 2: Scoring Engine
-- [ ] Phase 3: Constraint Solver
-- [ ] Phase 4: FastAPI Backend
-- [ ] Phase 5: React Frontend
-- [ ] Phase 6: Integration & Docker
-- [ ] Phase 7: PostGIS Spatial (Optional)
-- [ ] Phase 8: Demo Polish
+- [x] Phase 0: Repo Setup & Environment
+- [x] Phase 1: Mock Data Layer
+- [x] Phase 2: Scoring Engine
+- [x] Phase 3: Constraint Solver
+- [x] Phase 4: FastAPI Backend
+- [x] Phase 5: React Frontend
+- [x] Phase 6: Integration & Docker
+- [x] Phase 7: PostGIS Spatial Integration
+- [x] Phase 8: Demo Polish

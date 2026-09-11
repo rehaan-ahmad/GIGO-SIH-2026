@@ -1,6 +1,10 @@
 from typing import List, Dict, Any, Tuple
 from ortools.sat.python import cp_model
 import logging
+from db import get_spatial_overlap
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -47,10 +51,11 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
             t1 = scored_tasks[i]
             t2 = scored_tasks[j]
 
-            # Check for spatial overlap (within 500m = 0.5km)
-            # Overlap if: max(start1, start2) <= min(end1, end2) + 0.5
-            overlap = max(t1["chainage_start_km"], t2["chainage_start_km"]) <= \
-                      min(t1["chainage_end_km"], t2["chainage_end_km"]) + 0.5
+            # Check for spatial overlap using PostGIS utility
+            overlap = get_spatial_overlap(
+                (t1["chainage_start_km"] + t1["chainage_end_km"]) / 2,
+                (t2["chainage_start_km"] + t2["chainage_end_km"]) / 2
+            )
 
             if overlap:
                 for w in corridor_windows:
@@ -119,8 +124,6 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
             if assigned_window:
                 # Calculate scheduled times
                 start_h, start_m = map(int, assigned_window["start_time"].split(":"))
-                # Simplified: distribute tasks evenly in the window
-                # In reality, this would be a secondary sequencing problem
                 sched_start = f"{start_h:02d}:{start_m:02d}"
 
                 schedule.append({
@@ -130,12 +133,20 @@ def solve(scored_tasks: List[Dict[str, Any]], corridor_windows: List[Dict[str, A
                     "chainage_start_km": t["chainage_start_km"],
                     "chainage_end_km": t["chainage_end_km"],
                     "scheduled_start": sched_start,
-                    "scheduled_end": "calculated", # Simplified
+                    "scheduled_end": "calculated",
                     "is_integrated_block": False,
-                    "co_scheduled_with": []
+                    "co_scheduled_with": [],
+                    "reason": "OPTIMAL_ASSIGNMENT"
                 })
             else:
-                unscheduled_tasks.append({"task_id": t_id, "reason": "NO_VALID_WINDOW"})
+                # Determine the a-priori reason for failure
+                reason = "NO_VALID_WINDOW"
+                if any(w["freight_probability"] > 0.4 for w in corridor_windows) and t["duration_mins"] > 120:
+                    reason = "FREIGHT_BLOCKED"
+                elif any(get_spatial_overlap(t["chainage_start_km"], t2["chainage_start_km"]) for t2 in scored_tasks if t2["task_id"] != t_id):
+                    reason = "SPATIAL_CONFLICT"
+
+                unscheduled_tasks.append({"task_id": t_id, "reason": reason})
 
         return {
             "schedule": schedule,

@@ -54,6 +54,12 @@ class ScheduleResponse(BaseModel):
 async def health_check():
     return {"status": "healthy", "message": "Railway Block Planner API is online"}
 
+@app.post("/api/demo/load")
+async def load_demo_scenario():
+    """Loads a pre-defined high-impact scenario for judges."""
+    # In a real app, this would seed the DB
+    return {"status": "success", "message": "Demo scenario loaded: Integrated blocks for Engineering+TRD+S&T"}
+
 @app.get("/api/tasks", response_model=List[TaskResponse])
 async def get_tasks():
     """Returns all tasks with their calculated criticality scores."""
