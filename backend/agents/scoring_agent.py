@@ -6,51 +6,48 @@ logger = logging.getLogger(__name__)
 
 def score_tasks(tasks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
-    Assigns criticality scores to tasks based on AHP-weighted formula.
+    Ranks maintenance tasks using an Analytic Hierarchy Process (AHP) weighted formula.
+
+    The criticality score C_i is calculated as:
     C_i = (w1 * Severity) + (w2 * OverdueDays) + (w3 * TrainDelayCost)
     """
-    # Weights
-    W1 = 0.50  # Severity
-    W2 = 0.30  # Overdue Days
-    W3 = 0.20  # Train Delay Cost (Simplified as a function of duration/severity)
+    # Weights correspond to relative priority: Severity (50%), Overdue (30%), Delay Cost (20%)
+    W1 = 0.50
+    W2 = 0.30
+    W3 = 0.20
 
     scored_tasks = []
 
     for task in tasks:
-        # Simplified TrainDelayCost: assume 10 points per hour of duration, scaled by severity
-        # In production, this would be predicted by XGBoost
+        # TrainDelayCost is currently estimated as a function of duration and severity.
+        # This serves as a placeholder for a predictive XGBoost model.
         train_delay_cost = (task.get("duration_mins", 0) / 60) * (task.get("severity", 1) / 2)
 
-        # Basic score
         score = (W1 * task.get("severity", 0)) + \
                 (W2 * task.get("days_overdue", 0)) + \
                 (W3 * train_delay_cost)
 
-        # Multipliers
-        # S&T signal failure tasks: x1.5 (safety-critical)
+        # S&T signal failures are safety-critical and receive a 1.5x priority boost.
         if task.get("dept") == "S&T":
             score *= 1.5
 
-        # Power block required: +5 points (clustering bonus)
+        # Power block requirements receive a flat additive bonus to encourage
+        # co-scheduling with other power-dependent tasks.
         if task.get("needs_power_block"):
             score += 5.0
 
-        # Normalize score 0-100 (approximate normalization)
-        # Max possible score is roughly (0.5*10) + (0.3*30) + (0.2*30) + 5 * 1.5 = ~25
-        # We multiply by 4 to bring it closer to a 0-100 scale for the solver
+        # Normalize the resulting score to a 0-100 scale for CP-SAT integer encoding.
+        # A multiplier of 4.0 is used based on the expected maximum raw score of ~25.
         normalized_score = min(100.0, score * 4.0)
 
-        # Priority rank will be determined by sorting
         scored_tasks.append({
             **task,
             "criticality_score": round(normalized_score, 2),
             "shadow_block_candidate": task.get("needs_power_block", False)
         })
 
-    # Sort descending by criticality_score
     scored_tasks.sort(key=lambda x: x["criticality_score"], reverse=True)
 
-    # Log top 5
     logger.info("Top 5 Critical Tasks:")
     for i, t in enumerate(scored_tasks[:5]):
         logger.info(f"{i+1}. {t['task_id']} - Score: {t['criticality_score']}")

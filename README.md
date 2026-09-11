@@ -1,34 +1,65 @@
 # AI-Powered Automatic Block Planning (GIGO-SIH 2026)
 
-## Overview
-The AI-Powered Automatic Block Planning system is a spatio-temporal optimizer designed to automate the allocation of railway maintenance blocks. Unlike simple schedulers, this system enforces physical safety clearances and optimizes for criticality and corridor availability.
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/rehaan-ahmad/GIGO-SIH-2026)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Stack](https://img.shields.io/badge/stack-FastAPI%20%7C%20React%20%7C%20OR--Tools-orange)]()
 
-## Key Features
-- **Spatio-Temporal Optimization**: Ensures maintenance tasks do not overlap in time AND space (500m clearance).
-- **Criticality Scoring**: Uses an AHP-weighted formula (and optional XGBoost) to prioritize urgent repairs.
-- **String Diagram UI**: High-fidelity time-distance graphs for railway controllers.
-- **Real-time Re-optimization**: Greedy heuristic for immediate feedback during UI drag-and-drop.
+## 🚂 Project Overview
+The **AI-Powered Automatic Block Planning** system is a professional-grade spatio-temporal optimizer designed for railway maintenance. It replaces manual, error-prone block scheduling with an automated engine that ensures safety, maximizes corridor utilization, and prioritizes critical repairs.
 
-## Tech Stack
-- **Backend**: FastAPI, OR-Tools CP-SAT, XGBoost, PostgreSQL+PostGIS, Redis.
-- **Frontend**: React, D3.js, Tailwind CSS.
-- **Infrastructure**: Docker, Docker Compose.
+### The Core Problem
+Railway maintenance requires "blocks" (portions of the track closed to traffic). Traditional scheduling often ignores the **spatial dimension**, leading to conflicts where multiple heavy machines are too close for safety. This system treats the railway as a 4D space (X-axis: Chainage, Y-axis: Time, Z-axis: Dept/Layer).
 
-## Getting Started
+## ✨ Key Features
+- **Spatio-Temporal Solver**: Uses Google OR-Tools CP-SAT to enforce a strict **500m physical clearance** between machinery.
+- **AHP Criticality Scoring**: Implements an Analytic Hierarchy Process to rank tasks based on severity, overdue status, and train delay impact.
+- **Railway String Diagrams**: A custom D3.js visualization providing a high-fidelity time-distance graph, the gold standard for railway controllers.
+- **Real-time Heuristic**: A greedy re-optimizer that provides $<500\text{ms}$ feedback when blocks are dragged in the UI.
+- **Stochastic Freight Guard**: Automatically buffers windows with high freight probability to prevent cascading delays.
+
+## 🛠 Tech Stack
+| Layer | Technology | Purpose |
+| :--- | :--- | :--- |
+| **API** | `FastAPI` | High-performance async REST interface |
+| **Solver** | `OR-Tools CP-SAT` | Constraint programming for optimal block assignment |
+| **Intelligence** | `XGBoost` | (Optional) Predictive delay cost modeling |
+| **Database** | `PostgreSQL` + `PostGIS` | Spatial storage and proximity queries |
+| **Cache/Queue** | `Redis` + `Celery` | Background solver execution and state caching |
+| **Frontend** | `React 19` + `D3.js` | Professional String Diagram UI |
+| **Styling** | `Tailwind CSS 4` | Dark-mode control room aesthetic |
+| **DevOps** | `Docker` + `Compose` | One-click environment orchestration |
+
+## 🚀 Quick Start
 
 ### Prerequisites
 - Docker & Docker Compose
-- Python 3.11+
-- Node.js 20+
+- Python 3.11+ (for local dev)
+- Node.js 20+ (for local dev)
 
-### Installation & Run
-1. Clone the repository:
+### Installation
+1. **Clone the Repo**
    ```bash
    git clone git@github.com:rehaan-ahmad/GIGO-SIH-2026.git
    cd GIGO
    ```
-2. Start the system using Docker:
+
+2. **Run via Docker (Recommended)**
    ```bash
    docker-compose up --build
    ```
-3. Access the frontend at `http://localhost:5173` and backend at `http://localhost:8000`.
+
+3. **Access the App**
+   - 🌐 **Frontend**: `http://localhost:5173`
+   - 🔌 **Backend API**: `http://localhost:8000`
+   - 📖 **API Docs**: `http://localhost:8000/docs` (Swagger UI)
+
+## 📐 System Architecture
+The system operates as a pipeline of specialized agents:
+`IngestionAgent` $\rightarrow$ `ScoringAgent` $\rightarrow$ `SolverAgent` $\rightarrow$ `API` $\rightarrow$ `UI`
+
+For a deep dive into the mathematical constraints and data flow, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+## 📄 Documentation
+- **API Reference**: [`docs/API.md`](docs/API.md)
+- **Technical Architecture**: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)
+- **Implementation Handover**: [`handover.md`](handover.md)

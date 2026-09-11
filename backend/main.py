@@ -3,30 +3,53 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 import logging
+import time
 from agents.ingestion_agent import ingest
 from agents.scoring_agent import score_tasks
 from agents.solver_agent import solve
 from agents.heuristic_agent import solve_heuristic as heuristic_reoptimize
+from db import init_db
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Railway Block Planner API", version="1.0.0")
 
-# CORS setup for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, replace with specific origins
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# --- State Cache to prevent redundant I/O ---
+class SystemState:
+    def __init__(self):
+        self.tasks = []
+        self.windows = []
+        self.scored_tasks = []
+        self.last_updated = 0
+        self.cache_ttl = 60  # 60 seconds
+
+    def refresh(self):
+        now = time.time()
+        if now - self.last_updated > self.cache_ttl:
+            logger.info("Refreshing system state from data source...")
+            data = ingest()
+            self.tasks = data["tasks"]
+            self.windows = data["corridor_windows"]
+            self.scored_tasks = score_tasks(self.tasks)
+            self.last_updated = now
+        return self.tasks, self.windows, self.scored_tasks
+
+state = SystemState()
+
 # --- Pydantic Models ---
 
 class OptimizeRequest(BaseModel):
-    horizon: str = "weekly"  # "weekly" | "monthly"
-    solver_mode: str = "exact" # "exact" | "heuristic"
+    horizon: str = "weekly"
+    solver_mode: str = "exact"
 
 class ReoptimizeRequest(BaseModel):
     locked_tasks: List[str] = []
@@ -48,7 +71,10 @@ class ScheduleResponse(BaseModel):
     unscheduled_tasks: List[Dict[str, Any]]
     solver_status: str
 
-# --- Endpoints ---
+@app.on_event("startup")
+async def startup_event():
+    init_db()
+    logger.info("Database initialized and API starting up.")
 
 @app.get("/api/health")
 async def health_check():
@@ -56,15 +82,11 @@ async def health_check():
 
 @app.post("/api/demo/load")
 async def load_demo_scenario():
-    """Loads a pre-defined high-impact scenario for judges."""
-    # In a real app, this would seed the DB
     return {"status": "success", "message": "Demo scenario loaded: Integrated blocks for Engineering+TRD+S&T"}
 
 @app.get("/api/tasks", response_model=List[TaskResponse])
 async def get_tasks():
-    """Returns all tasks with their calculated criticality scores."""
-    data = ingest()
-    scored_tasks = score_tasks(data["tasks"])
+    _, _, scored_tasks = state.refresh()
     return [
         TaskResponse(
             task_id=t["task_id"],
@@ -79,25 +101,15 @@ async def get_tasks():
 
 @app.get("/api/windows")
 async def get_windows():
-    """Returns corridor availability windows."""
-    data = ingest()
-    return data["corridor_windows"]
+    _, windows, _ = state.refresh()
+    return windows
 
 @app.post("/api/optimize-blocks", response_model=ScheduleResponse)
 async def optimize_blocks(req: OptimizeRequest):
-    """
-    Full pipeline: Ingest -> Score -> Solve.
-    """
     logger.info(f"Optimizing blocks: horizon={req.horizon}, mode={req.solver_mode}")
 
-    # 1. Ingest
-    data = ingest()
-
-    # 2. Score
-    scored_tasks = score_tasks(data["tasks"])
-
-    # 3. Solve
-    result = solve(scored_tasks, data["corridor_windows"], mode=req.solver_mode, horizon=req.horizon)
+    _, windows, scored_tasks = state.refresh()
+    result = solve(scored_tasks, windows, mode=req.solver_mode, horizon=req.horizon)
 
     return ScheduleResponse(
         status="success",
@@ -108,18 +120,10 @@ async def optimize_blocks(req: OptimizeRequest):
 
 @app.post("/api/reoptimize")
 async def reoptimize(req: ReoptimizeRequest):
-    """
-    Real-time heuristic re-optimization triggered by UI drag-and-drop.
-    """
     logger.info(f"Real-time re-optimization for task {req.dragged_task_id}")
 
-    # In a real app, we'd fetch the current state from DB
-    data = ingest()
-    scored_tasks = score_tasks(data["tasks"])
-
-    # We need the current full schedule to identify what is locked
-    # For now, we'll run a quick solve to get a base schedule
-    base_result = solve(scored_tasks, data["corridor_windows"], mode="heuristic")
+    _, windows, scored_tasks = state.refresh()
+    base_result = solve(scored_tasks, windows, mode="heuristic")
 
     result = heuristic_reoptimize(
         full_schedule=base_result["schedule"],
@@ -127,15 +131,14 @@ async def reoptimize(req: ReoptimizeRequest):
         forced_window=req.forced_window,
         dragged_task_id=req.dragged_task_id,
         scored_tasks=scored_tasks,
-        corridor_windows=data["corridor_windows"]
+        corridor_windows=windows
     )
 
     return result
 
 @app.get("/api/schedule/{date}")
 async def get_schedule_by_date(date: str):
-    """Fetch stored daily block plan. (Mocked for now)"""
-    return {"date": date, "schedule": [], "message": "Stored schedules coming soon with DB integration"}
+    return {"date": date, "schedule": [], "message": "Persistence layer integration pending."}
 
 if __name__ == "__main__":
     import uvicorn

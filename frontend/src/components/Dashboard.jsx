@@ -3,6 +3,11 @@ import { fetchTasks, optimizeBlocks } from '../api';
 import TaskList from './TaskList';
 import StringDiagram from './StringDiagram';
 
+/**
+ * Dashboard Component
+ * Main application shell that integrates the TaskList and StringDiagram.
+ * Manages the overall state for task retrieval and optimization requests.
+ */
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [schedule, setSchedule] = useState([]);

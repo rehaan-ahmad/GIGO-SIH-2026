@@ -11,29 +11,29 @@ def solve_heuristic(full_schedule: List[Dict[str, Any]],
                     scored_tasks: List[Dict[str, Any]],
                     corridor_windows: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
-    Real-time re-optimizer. Fires when Controller drags a block in UI. Must complete < 500ms.
+    Performs a real-time greedy re-optimization of the block plan.
+
+    This heuristic is triggered during UI interactions (e.g., dragging a block)
+    to provide immediate feedback (<500ms) without invoking the full CP-SAT solver.
     """
-    # 1. Reset window capacities
+    # Section 1: Reinitialize window capacities based on availability
     window_capacities = {}
     for w in corridor_windows:
         start_h, start_m = map(int, w["start_time"].split(":"))
         end_h, end_m = map(int, w["end_time"].split(":"))
         window_capacities[w["window_id"]] = (end_h * 60 + end_m) - (start_h * 60 + start_m)
 
-    # 2. Deduct locked tasks from capacities
+    # Section 2: Account for locked tasks that cannot be moved
     for task in full_schedule:
         if task["task_id"] in locked_tasks:
-            # Find the task details to get duration
             task_detail = next((t for t in scored_tasks if t["task_id"] == task["task_id"]), None)
             if task_detail:
                 window_capacities[task["window_id"]] -= task_detail["duration_mins"]
 
-    # 3. Force the dragged task into the forced window
+    # Section 3: Prioritize the dragged task in its new forced window
     new_schedule = []
-    # Find dragged task duration
     dragged_task_detail = next((t for t in scored_tasks if t["task_id"] == dragged_task_id), None)
     if dragged_task_detail:
-        # Check if forced window has capacity
         w_id = forced_window["window_id"]
         if window_capacities[w_id] >= dragged_task_detail["duration_mins"]:
             window_capacities[w_id] -= dragged_task_detail["duration_mins"]
@@ -49,10 +49,9 @@ def solve_heuristic(full_schedule: List[Dict[str, Any]],
                 "co_scheduled_with": []
             })
         else:
-            # Log capacity failure
             logger.warning(f"Forced window {w_id} has no capacity for {dragged_task_id}")
 
-    # 4. Greedy assignment for the rest
+    # Section 4: Greedy assignment for all remaining tasks sorted by criticality
     for t in scored_tasks:
         if t["task_id"] == dragged_task_id or t["task_id"] in locked_tasks:
             continue

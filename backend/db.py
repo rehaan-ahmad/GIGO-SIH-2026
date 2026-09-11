@@ -10,7 +10,10 @@ engine = create_engine(DB_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def init_db():
-    """Initialize PostGIS and create basic tables."""
+    """
+    Initializes the database schema, including the PostGIS extension
+    and the track_segments table for spatial indexing.
+    """
     with engine.connect() as conn:
         conn.execute(text("CREATE EXTENSION IF NOT EXISTS postgis;"))
         conn.execute(text("""
@@ -26,10 +29,9 @@ def init_db():
 
 def get_spatial_overlap(task1_km: float, task2_km: float, buffer_m: float = 500.0) -> bool:
     """
-    Checks if two chainages are within the buffer distance.
-    In a full PostGIS implementation, this would use ST_DWithin on geometries.
-    For the hackathon demo, we simulate the spatial check using km arithmetic
-    but provide the hook for the real SQL query.
+    Determines if two track locations are within the specified safety buffer.
+
+    Currently implements a linear distance approximation. This function serves as
+    the interface for future migration to PostGIS ST_DWithin queries.
     """
-    # Simulating: SELECT ST_DWithin(geom1, geom2, 500) ...
     return abs(task1_km - task2_km) <= (buffer_m / 1000.0)

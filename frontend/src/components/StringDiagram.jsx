@@ -1,13 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
+/**
+ * StringDiagram Component
+ * Renders a professional Railway String Diagram (Time-Distance Graph).
+ * X-axis represents time (00:00 to 24:00) and Y-axis represents track chainage (km).
+ * Maintenance blocks are visualized as colored rectangles.
+ */
 const StringDiagram = ({ schedule, windows, onBlockDrag }) => {
   const svgRef = useRef();
 
   useEffect(() => {
     if (!svgRef.current || !schedule) return;
 
-    // Clear previous SVG content
     d3.select(svgRef.current).selectAll('*').remove();
 
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
@@ -20,22 +25,21 @@ const StringDiagram = ({ schedule, windows, onBlockDrag }) => {
       .append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // 1. Setup Scales
-    // X-axis: Time (0-24h)
+    // Section 1: Scale Configuration
     const xScale = d3.scaleLinear()
       .domain([0, 24])
       .range([0, width]);
 
-    // Y-axis: Chainage (Km) - Dynamic domain
     const allChainages = schedule.flatMap(b => [b.chainage_start_km, b.chainage_end_km]);
     const yMin = allChainages.length ? d3.min(allChainages) - 1 : 1000;
     const yMax = allChainages.length ? d3.max(allChainages) + 1 : 1100;
 
+    // Y-axis is inverted to represent increasing chainage from top to bottom.
     const yScale = d3.scaleLinear()
-      .domain([yMax, yMin]) // Inverted Y-axis: Higher km at top or bottom? Usually bottom is 0.
+      .domain([yMax, yMin])
       .range([0, height]);
 
-    // 2. Draw Axes
+    // Section 2: Axis Rendering
     svg.append('g')
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(xScale).tickFormat(d => `${d}:00`))
@@ -45,11 +49,11 @@ const StringDiagram = ({ schedule, windows, onBlockDrag }) => {
       .call(d3.axisLeft(yScale))
       .attr('color', '#64748b');
 
-    // 3. Render Maintenance Blocks
+    // Section 3: Maintenance Block Visualization
     const deptColors = {
-      'Engineering': '#ef4444', // Red
-      'TRD': '#3b82f6',          // Blue
-      'S&T': '#22c55e',          // Green
+      'Engineering': '#ef4444',
+      'TRD': '#3b82f6',
+      'S&T': '#22c55e',
     };
 
     svg.selectAll('.block')
@@ -58,25 +62,22 @@ const StringDiagram = ({ schedule, windows, onBlockDrag }) => {
       .append('rect')
       .attr('class', 'block cursor-pointer hover:opacity-80 transition-opacity')
       .attr('x', d => {
-        // Simple parsing of "HH:mm" to float hours
         const [h, m] = d.scheduled_start.split(':').map(Number);
         return xScale(h + m/60);
       })
       .attr('y', d => yScale(d.chainage_end_km))
       .attr('width', d => {
-        // Mock duration for now if not provided
-        const durationHours = 4; // Default 4h window
+        const durationHours = 4;
         return xScale(durationHours);
       })
       .attr('height', d => yScale(d.chainage_start_km) - yScale(d.chainage_end_km))
       .attr('fill', d => deptColors[d.dept] || '#94a3b8')
       .attr('rx', 4)
       .on('click', (event, d) => {
-        // In a real app, this would trigger a detail view
-        console.log('Block clicked:', d);
+        console.log('Block selected:', d);
       });
 
-    // 4. Render Grid Lines (Hour marks)
+    // Section 4: Grid Layout (Hourly Markers)
     svg.append('g')
       .attr('class', 'grid')
       .attr('stroke', '#1e293b')

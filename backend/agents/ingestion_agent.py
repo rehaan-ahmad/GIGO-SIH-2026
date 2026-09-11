@@ -28,7 +28,9 @@ class WindowModel(BaseModel):
 
 def ingest() -> Dict[str, Any]:
     """
-    Polls and normalizes data from mock JSON.
+    Loads and normalizes maintenance tasks and corridor availability from
+    the mock data store. Validates schemas via Pydantic and injects
+    stochastic freight buffers based on probability thresholds.
     """
     try:
         with open('data/mocks.json', 'r') as f:
@@ -39,7 +41,6 @@ def ingest() -> Dict[str, Any]:
 
         for t in raw.get("tasks", []):
             try:
-                # Validation via Pydantic
                 task_obj = TaskModel(**t)
                 tasks.append(task_obj.model_dump())
             except Exception as e:
@@ -50,8 +51,9 @@ def ingest() -> Dict[str, Any]:
         for w in raw.get("corridor_availability", []):
             try:
                 window_obj = WindowModel(**w)
-                # Apply stochastic freight buffer: probability > 0.4 -> buffer_mins = 120
                 window_data = window_obj.model_dump()
+                # Windows with freight probability > 0.4 require a 120-minute
+                # buffer to account for stochastic freight train arrivals.
                 if window_data["freight_probability"] > 0.4:
                     window_data["buffer_mins"] = 120
                 else:
@@ -63,7 +65,7 @@ def ingest() -> Dict[str, Any]:
         return {
             "tasks": tasks,
             "corridor_windows": windows,
-            "ingestion_timestamp": "2026-09-11T12:00:00Z", # Mock timestamp
+            "ingestion_timestamp": "2026-09-11T12:00:00Z",
             "rejected_records": rejected_records
         }
     except FileNotFoundError:

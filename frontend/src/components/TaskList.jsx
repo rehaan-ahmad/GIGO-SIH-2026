@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * TaskList Component
+ * Renders a vertical queue of maintenance tasks sorted by criticality.
+ * Each item displays a color-coded urgency badge and basic spatial metadata.
+ */
 const TaskList = ({ tasks, onTaskSelect }) => {
   if (!tasks || tasks.length === 0) {
     return (

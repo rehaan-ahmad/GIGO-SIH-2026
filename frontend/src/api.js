@@ -9,21 +9,33 @@ const api = axios.create({
   },
 });
 
+/**
+ * Fetches all maintenance tasks ranked by criticality.
+ */
 export const fetchTasks = async () => {
   const response = await api.get('/tasks');
   return response.data;
 };
 
+/**
+ * Fetches all currently available corridor windows.
+ */
 export const fetchWindows = async () => {
   const response = await api.get('/windows');
   return response.data;
 };
 
+/**
+ * Triggers the full optimization pipeline to generate a new block plan.
+ */
 export const optimizeBlocks = async (horizon = 'weekly', mode = 'exact') => {
   const response = await api.post('/optimize-blocks', { horizon, solver_mode: mode });
   return response.data;
 };
 
+/**
+ * Triggers a real-time heuristic re-optimization for UI drag-and-drop interactions.
+ */
 export const reoptimize = async (lockedTasks, forcedWindow, draggedTaskId) => {
   const response = await api.post('/reoptimize', {
     locked_tasks: lockedTasks,
