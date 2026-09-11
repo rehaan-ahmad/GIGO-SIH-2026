@@ -1,75 +1,1950 @@
 {
   "tasks": [
     {
-      "task_id": "TMS-8092",
-      "dept": "Engineering",
-      "type": "Track tamping",
-      "chainage_start_km": 1042.0,
-      "chainage_end_km": 1045.5,
-      "duration_mins": 240,
-      "severity": 8,
-      "days_overdue": 5,
-      "needs_power_block": false,
-      "machinery_type": "Tamping Machine"
-    },
-    {
-      "task_id": "TDMS-441",
+      "task_id": "TRD-1000",
       "dept": "TRD",
-      "type": "OHE Mast Repair",
-      "chainage_start_km": 1043.0,
-      "chainage_end_km": 1044.0,
-      "duration_mins": 180,
-      "severity": 7,
-      "days_overdue": 2,
+      "type": "OHE mast repair",
+      "chainage_start_km": 1044.83,
+      "chainage_end_km": 1048.125,
+      "duration_mins": 120,
+      "severity": 8,
+      "days_overdue": 18,
       "needs_power_block": true,
       "machinery_type": "Tower Wagon"
     },
     {
-      "task_id": "SMMS-102",
+      "task_id": "S&T-1001",
       "dept": "S&T",
-      "type": "Point Machine Testing",
-      "chainage_start_km": 1045.0,
-      "chainage_end_km": 1045.2,
+      "type": "Signal post repair",
+      "chainage_start_km": 1008.62,
+      "chainage_end_km": 1010.926,
+      "duration_mins": 120,
+      "severity": 6,
+      "days_overdue": 18,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1002",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1093.059,
+      "chainage_end_km": 1093.535,
+      "duration_mins": 60,
+      "severity": 6,
+      "days_overdue": 13,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1003",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1009.714,
+      "chainage_end_km": 1014.584,
       "duration_mins": 120,
       "severity": 9,
+      "days_overdue": 25,
+      "needs_power_block": false,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "S&T-1004",
+      "dept": "S&T",
+      "type": "Signal post repair",
+      "chainage_start_km": 1034.449,
+      "chainage_end_km": 1037.796,
+      "duration_mins": 240,
+      "severity": 6,
+      "days_overdue": 16,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "ENG-1005",
+      "dept": "Engineering",
+      "type": "Ballast cleaning",
+      "chainage_start_km": 1073.061,
+      "chainage_end_km": 1074.995,
+      "duration_mins": 180,
+      "severity": 5,
+      "days_overdue": 4,
+      "needs_power_block": false,
+      "machinery_type": "Ballast Regulator"
+    },
+    {
+      "task_id": "ENG-1006",
+      "dept": "Engineering",
+      "type": "Deep screening",
+      "chainage_start_km": 1012.107,
+      "chainage_end_km": 1015.571,
+      "duration_mins": 240,
+      "severity": 8,
+      "days_overdue": 21,
+      "needs_power_block": true,
+      "machinery_type": "Rail Grinding Machine"
+    },
+    {
+      "task_id": "TRD-1007",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1017.723,
+      "chainage_end_km": 1020.385,
+      "duration_mins": 240,
+      "severity": 10,
+      "days_overdue": 11,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "S&T-1008",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1037.07,
+      "chainage_end_km": 1037.682,
+      "duration_mins": 360,
+      "severity": 8,
       "days_overdue": 10,
       "needs_power_block": false,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "TRD-1009",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1030.029,
+      "chainage_end_km": 1030.204,
+      "duration_mins": 120,
+      "severity": 6,
+      "days_overdue": 11,
+      "needs_power_block": true,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "ENG-1010",
+      "dept": "Engineering",
+      "type": "Ballast cleaning",
+      "chainage_start_km": 1029.765,
+      "chainage_end_km": 1032.414,
+      "duration_mins": 120,
+      "severity": 8,
+      "days_overdue": 4,
+      "needs_power_block": true,
+      "machinery_type": "Tamping Machine"
+    },
+    {
+      "task_id": "S&T-1011",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1065.046,
+      "chainage_end_km": 1066.05,
+      "duration_mins": 360,
+      "severity": 10,
+      "days_overdue": 19,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "TRD-1012",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1071.923,
+      "chainage_end_km": 1073.38,
+      "duration_mins": 240,
+      "severity": 7,
+      "days_overdue": 16,
+      "needs_power_block": true,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "S&T-1013",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1078.287,
+      "chainage_end_km": 1081.226,
+      "duration_mins": 360,
+      "severity": 7,
+      "days_overdue": 12,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "TRD-1014",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1075.612,
+      "chainage_end_km": 1079.001,
+      "duration_mins": 240,
+      "severity": 9,
+      "days_overdue": 5,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "TRD-1015",
+      "dept": "TRD",
+      "type": "Feeder cable replacement",
+      "chainage_start_km": 1091.303,
+      "chainage_end_km": 1091.968,
+      "duration_mins": 360,
+      "severity": 6,
+      "days_overdue": 25,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "TRD-1016",
+      "dept": "TRD",
+      "type": "Feeder cable replacement",
+      "chainage_start_km": 1088.84,
+      "chainage_end_km": 1090.348,
+      "duration_mins": 120,
+      "severity": 10,
+      "days_overdue": 26,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "S&T-1017",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1042.788,
+      "chainage_end_km": 1047.678,
+      "duration_mins": 180,
+      "severity": 7,
+      "days_overdue": 22,
+      "needs_power_block": true,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "ENG-1018",
+      "dept": "Engineering",
+      "type": "Deep screening",
+      "chainage_start_km": 1085.663,
+      "chainage_end_km": 1086.458,
+      "duration_mins": 60,
+      "severity": 5,
+      "days_overdue": 29,
+      "needs_power_block": false,
+      "machinery_type": "Ballast Regulator"
+    },
+    {
+      "task_id": "ENG-1019",
+      "dept": "Engineering",
+      "type": "Ballast cleaning",
+      "chainage_start_km": 1045.286,
+      "chainage_end_km": 1046.452,
+      "duration_mins": 120,
+      "severity": 4,
+      "days_overdue": 7,
+      "needs_power_block": true,
+      "machinery_type": "Ballast Regulator"
+    },
+    {
+      "task_id": "S&T-1020",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1093.977,
+      "chainage_end_km": 1094.145,
+      "duration_mins": 180,
+      "severity": 10,
+      "days_overdue": 1,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1021",
+      "dept": "S&T",
+      "type": "Signal post repair",
+      "chainage_start_km": 1043.852,
+      "chainage_end_km": 1048.702,
+      "duration_mins": 120,
+      "severity": 10,
+      "days_overdue": 1,
+      "needs_power_block": true,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "S&T-1022",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1021.608,
+      "chainage_end_km": 1025.626,
+      "duration_mins": 120,
+      "severity": 8,
+      "days_overdue": 0,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1023",
+      "dept": "S&T",
+      "type": "Signal post repair",
+      "chainage_start_km": 1045.419,
+      "chainage_end_km": 1046.362,
+      "duration_mins": 240,
+      "severity": 8,
+      "days_overdue": 11,
+      "needs_power_block": true,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "ENG-1024",
+      "dept": "Engineering",
+      "type": "Ballast cleaning",
+      "chainage_start_km": 1056.466,
+      "chainage_end_km": 1057.823,
+      "duration_mins": 120,
+      "severity": 8,
+      "days_overdue": 19,
+      "needs_power_block": true,
+      "machinery_type": "Tamping Machine"
+    },
+    {
+      "task_id": "ENG-1025",
+      "dept": "Engineering",
+      "type": "Deep screening",
+      "chainage_start_km": 1073.801,
+      "chainage_end_km": 1078.591,
+      "duration_mins": 180,
+      "severity": 5,
+      "days_overdue": 26,
+      "needs_power_block": false,
+      "machinery_type": "Rail Grinding Machine"
+    },
+    {
+      "task_id": "TRD-1026",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1016.44,
+      "chainage_end_km": 1020.961,
+      "duration_mins": 60,
+      "severity": 8,
+      "days_overdue": 16,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "ENG-1027",
+      "dept": "Engineering",
+      "type": "Track tamping",
+      "chainage_start_km": 1053.004,
+      "chainage_end_km": 1055.225,
+      "duration_mins": 60,
+      "severity": 6,
+      "days_overdue": 29,
+      "needs_power_block": true,
+      "machinery_type": "Rail Grinding Machine"
+    },
+    {
+      "task_id": "TRD-1028",
+      "dept": "TRD",
+      "type": "Feeder cable replacement",
+      "chainage_start_km": 1062.521,
+      "chainage_end_km": 1067.121,
+      "duration_mins": 60,
+      "severity": 7,
+      "days_overdue": 19,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "ENG-1029",
+      "dept": "Engineering",
+      "type": "Rail renewal",
+      "chainage_start_km": 1017.051,
+      "chainage_end_km": 1019.175,
+      "duration_mins": 360,
+      "severity": 5,
+      "days_overdue": 10,
+      "needs_power_block": false,
+      "machinery_type": "Tamping Machine"
+    },
+    {
+      "task_id": "S&T-1030",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1050.13,
+      "chainage_end_km": 1052.813,
+      "duration_mins": 120,
+      "severity": 9,
+      "days_overdue": 18,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "TRD-1031",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1065.923,
+      "chainage_end_km": 1066.921,
+      "duration_mins": 360,
+      "severity": 8,
+      "days_overdue": 27,
+      "needs_power_block": true,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "S&T-1032",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1082.074,
+      "chainage_end_km": 1086.254,
+      "duration_mins": 240,
+      "severity": 10,
+      "days_overdue": 22,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1033",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1042.82,
+      "chainage_end_km": 1043.138,
+      "duration_mins": 60,
+      "severity": 7,
+      "days_overdue": 17,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "TRD-1034",
+      "dept": "TRD",
+      "type": "Feeder cable replacement",
+      "chainage_start_km": 1082.261,
+      "chainage_end_km": 1084.233,
+      "duration_mins": 240,
+      "severity": 9,
+      "days_overdue": 6,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "ENG-1035",
+      "dept": "Engineering",
+      "type": "Ballast cleaning",
+      "chainage_start_km": 1049.167,
+      "chainage_end_km": 1053.942,
+      "duration_mins": 240,
+      "severity": 6,
+      "days_overdue": 18,
+      "needs_power_block": true,
+      "machinery_type": "Tamping Machine"
+    },
+    {
+      "task_id": "S&T-1036",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1048.893,
+      "chainage_end_km": 1050.684,
+      "duration_mins": 360,
+      "severity": 8,
+      "days_overdue": 7,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1037",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1015.736,
+      "chainage_end_km": 1019.06,
+      "duration_mins": 240,
+      "severity": 8,
+      "days_overdue": 24,
+      "needs_power_block": false,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "TRD-1038",
+      "dept": "TRD",
+      "type": "Feeder cable replacement",
+      "chainage_start_km": 1045.323,
+      "chainage_end_km": 1047.873,
+      "duration_mins": 60,
+      "severity": 7,
+      "days_overdue": 13,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "ENG-1039",
+      "dept": "Engineering",
+      "type": "Track tamping",
+      "chainage_start_km": 1094.219,
+      "chainage_end_km": 1098.328,
+      "duration_mins": 120,
+      "severity": 8,
+      "days_overdue": 9,
+      "needs_power_block": false,
+      "machinery_type": "Rail Grinding Machine"
+    },
+    {
+      "task_id": "ENG-1040",
+      "dept": "Engineering",
+      "type": "Ballast cleaning",
+      "chainage_start_km": 1025.702,
+      "chainage_end_km": 1029.332,
+      "duration_mins": 180,
+      "severity": 9,
+      "days_overdue": 15,
+      "needs_power_block": false,
+      "machinery_type": "Tamping Machine"
+    },
+    {
+      "task_id": "ENG-1041",
+      "dept": "Engineering",
+      "type": "Rail renewal",
+      "chainage_start_km": 1074.104,
+      "chainage_end_km": 1076.125,
+      "duration_mins": 120,
+      "severity": 6,
+      "days_overdue": 2,
+      "needs_power_block": true,
+      "machinery_type": "Ballast Regulator"
+    },
+    {
+      "task_id": "TRD-1042",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1087.059,
+      "chainage_end_km": 1092.005,
+      "duration_mins": 360,
+      "severity": 8,
+      "days_overdue": 10,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "ENG-1043",
+      "dept": "Engineering",
+      "type": "Rail renewal",
+      "chainage_start_km": 1024.62,
+      "chainage_end_km": 1025.426,
+      "duration_mins": 60,
+      "severity": 9,
+      "days_overdue": 27,
+      "needs_power_block": false,
+      "machinery_type": "Rail Grinding Machine"
+    },
+    {
+      "task_id": "TRD-1044",
+      "dept": "TRD",
+      "type": "Feeder cable replacement",
+      "chainage_start_km": 1006.335,
+      "chainage_end_km": 1008.457,
+      "duration_mins": 180,
+      "severity": 5,
+      "days_overdue": 24,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "ENG-1045",
+      "dept": "Engineering",
+      "type": "Track tamping",
+      "chainage_start_km": 1029.927,
+      "chainage_end_km": 1033.398,
+      "duration_mins": 60,
+      "severity": 9,
+      "days_overdue": 12,
+      "needs_power_block": true,
+      "machinery_type": "Ballast Regulator"
+    },
+    {
+      "task_id": "TRD-1046",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1036.245,
+      "chainage_end_km": 1036.705,
+      "duration_mins": 240,
+      "severity": 8,
+      "days_overdue": 6,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "TRD-1047",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1048.198,
+      "chainage_end_km": 1050.052,
+      "duration_mins": 120,
+      "severity": 9,
+      "days_overdue": 6,
+      "needs_power_block": true,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "S&T-1048",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1064.122,
+      "chainage_end_km": 1067.732,
+      "duration_mins": 360,
+      "severity": 10,
+      "days_overdue": 25,
+      "needs_power_block": true,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "S&T-1049",
+      "dept": "S&T",
+      "type": "Track circuit overhaul",
+      "chainage_start_km": 1056.35,
+      "chainage_end_km": 1059.51,
+      "duration_mins": 360,
+      "severity": 6,
+      "days_overdue": 7,
+      "needs_power_block": false,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "S&T-1050",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1060.68,
+      "chainage_end_km": 1063.884,
+      "duration_mins": 180,
+      "severity": 10,
+      "days_overdue": 12,
+      "needs_power_block": true,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "TRD-1051",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1011.592,
+      "chainage_end_km": 1012.508,
+      "duration_mins": 360,
+      "severity": 10,
+      "days_overdue": 24,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "TRD-1052",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1014.932,
+      "chainage_end_km": 1016.157,
+      "duration_mins": 120,
+      "severity": 8,
+      "days_overdue": 11,
+      "needs_power_block": false,
+      "machinery_type": "Tower Wagon"
+    },
+    {
+      "task_id": "TRD-1053",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1076.261,
+      "chainage_end_km": 1078.903,
+      "duration_mins": 60,
+      "severity": 6,
+      "days_overdue": 26,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "S&T-1054",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1091.115,
+      "chainage_end_km": 1094.262,
+      "duration_mins": 60,
+      "severity": 9,
+      "days_overdue": 17,
+      "needs_power_block": true,
+      "machinery_type": "Testing Kit"
+    },
+    {
+      "task_id": "S&T-1055",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1002.316,
+      "chainage_end_km": 1006.555,
+      "duration_mins": 240,
+      "severity": 9,
+      "days_overdue": 5,
+      "needs_power_block": true,
+      "machinery_type": "Hand Tools"
+    },
+    {
+      "task_id": "TRD-1056",
+      "dept": "TRD",
+      "type": "Booster transformer check",
+      "chainage_start_km": 1017.984,
+      "chainage_end_km": 1020.207,
+      "duration_mins": 360,
+      "severity": 8,
+      "days_overdue": 12,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "TRD-1057",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1008.281,
+      "chainage_end_km": 1012.694,
+      "duration_mins": 120,
+      "severity": 7,
+      "days_overdue": 14,
+      "needs_power_block": true,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "TRD-1058",
+      "dept": "TRD",
+      "type": "OHE mast repair",
+      "chainage_start_km": 1078.471,
+      "chainage_end_km": 1081.121,
+      "duration_mins": 180,
+      "severity": 10,
+      "days_overdue": 9,
+      "needs_power_block": false,
+      "machinery_type": "Insulated Ladder"
+    },
+    {
+      "task_id": "S&T-1059",
+      "dept": "S&T",
+      "type": "Point machine testing",
+      "chainage_start_km": 1029.786,
+      "chainage_end_km": 1034.607,
+      "duration_mins": 180,
+      "severity": 10,
+      "days_overdue": 29,
+      "needs_power_block": true,
       "machinery_type": "Hand Tools"
     }
   ],
   "corridor_availability": [
     {
-      "window_id": "WIN-001",
-      "date": "2026-10-15",
-      "start_time": "02:00",
-      "end_time": "06:00",
-      "freight_probability": 0.2,
-      "passenger_train_slots": ["02:30", "04:15"]
+      "window_id": "WIN-00-0",
+      "date": "2026-10-01",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.18,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
     },
     {
-      "window_id": "WIN-002",
+      "window_id": "WIN-00-1",
+      "date": "2026-10-01",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.9,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-00-2",
+      "date": "2026-10-01",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.33,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-01-0",
+      "date": "2026-10-02",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.44,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-01-1",
+      "date": "2026-10-02",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.21,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-01-2",
+      "date": "2026-10-02",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.53,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-02-0",
+      "date": "2026-10-03",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.97,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-02-1",
+      "date": "2026-10-03",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.41,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-02-2",
+      "date": "2026-10-03",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.03,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-03-0",
+      "date": "2026-10-04",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.41,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-03-1",
+      "date": "2026-10-04",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.4,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-03-2",
+      "date": "2026-10-04",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.3,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-04-0",
+      "date": "2026-10-05",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.84,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-04-1",
+      "date": "2026-10-05",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.59,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-04-2",
+      "date": "2026-10-05",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.35,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-05-0",
+      "date": "2026-10-06",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.93,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-05-1",
+      "date": "2026-10-06",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.48,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-05-2",
+      "date": "2026-10-06",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.33,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-06-0",
+      "date": "2026-10-07",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.53,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-06-1",
+      "date": "2026-10-07",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.94,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-06-2",
+      "date": "2026-10-07",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.1,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-07-0",
+      "date": "2026-10-08",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.47,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-07-1",
+      "date": "2026-10-08",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.12,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-07-2",
+      "date": "2026-10-08",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.49,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-08-0",
+      "date": "2026-10-09",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.23,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-08-1",
+      "date": "2026-10-09",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.92,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-08-2",
+      "date": "2026-10-09",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.15,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-09-0",
+      "date": "2026-10-10",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.93,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-09-1",
+      "date": "2026-10-10",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.29,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-09-2",
+      "date": "2026-10-10",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.32,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-10-0",
+      "date": "2026-10-11",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.33,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-10-1",
+      "date": "2026-10-11",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.4,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-10-2",
+      "date": "2026-10-11",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.59,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-11-0",
+      "date": "2026-10-12",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.96,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-11-1",
+      "date": "2026-10-12",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.44,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-11-2",
+      "date": "2026-10-12",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.31,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-12-0",
+      "date": "2026-10-13",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.99,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-12-1",
+      "date": "2026-10-13",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.77,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-12-2",
+      "date": "2026-10-13",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.07,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-13-0",
+      "date": "2026-10-14",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.37,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-13-1",
+      "date": "2026-10-14",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.13,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-13-2",
+      "date": "2026-10-14",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.51,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-14-0",
       "date": "2026-10-15",
-      "start_time": "06:00",
-      "end_time": "10:00",
-      "freight_probability": 0.6,
-      "passenger_train_slots": ["07:00", "08:30"]
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.63,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-14-1",
+      "date": "2026-10-15",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.41,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-14-2",
+      "date": "2026-10-15",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.35,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-15-0",
+      "date": "2026-10-16",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.26,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-15-1",
+      "date": "2026-10-16",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.81,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-15-2",
+      "date": "2026-10-16",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.11,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-16-0",
+      "date": "2026-10-17",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.2,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-16-1",
+      "date": "2026-10-17",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.87,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-16-2",
+      "date": "2026-10-17",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.25,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-17-0",
+      "date": "2026-10-18",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.67,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-17-1",
+      "date": "2026-10-18",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.91,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-17-2",
+      "date": "2026-10-18",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.98,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-18-0",
+      "date": "2026-10-19",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.88,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-18-1",
+      "date": "2026-10-19",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.24,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-18-2",
+      "date": "2026-10-19",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.14,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-19-0",
+      "date": "2026-10-20",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.08,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-19-1",
+      "date": "2026-10-20",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.99,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-19-2",
+      "date": "2026-10-20",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.54,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-20-0",
+      "date": "2026-10-21",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.01,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-20-1",
+      "date": "2026-10-21",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.19,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-20-2",
+      "date": "2026-10-21",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.49,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-21-0",
+      "date": "2026-10-22",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.89,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-21-1",
+      "date": "2026-10-22",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.97,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-21-2",
+      "date": "2026-10-22",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.49,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-22-0",
+      "date": "2026-10-23",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.34,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-22-1",
+      "date": "2026-10-23",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.61,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-22-2",
+      "date": "2026-10-23",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.47,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-23-0",
+      "date": "2026-10-24",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.37,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-23-1",
+      "date": "2026-10-24",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.29,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-23-2",
+      "date": "2026-10-24",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.72,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-24-0",
+      "date": "2026-10-25",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.57,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-24-1",
+      "date": "2026-10-25",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.43,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-24-2",
+      "date": "2026-10-25",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.2,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-25-0",
+      "date": "2026-10-26",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.86,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-25-1",
+      "date": "2026-10-26",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.67,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-25-2",
+      "date": "2026-10-26",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.78,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-26-0",
+      "date": "2026-10-27",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.93,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-26-1",
+      "date": "2026-10-27",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.45,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-26-2",
+      "date": "2026-10-27",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.45,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-27-0",
+      "date": "2026-10-28",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.64,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-27-1",
+      "date": "2026-10-28",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.01,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-27-2",
+      "date": "2026-10-28",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.24,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-28-0",
+      "date": "2026-10-29",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.37,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-28-1",
+      "date": "2026-10-29",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.32,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-28-2",
+      "date": "2026-10-29",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.45,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
+    },
+    {
+      "window_id": "WIN-29-0",
+      "date": "2026-10-30",
+      "start_time": "00:00",
+      "end_time": "04:00",
+      "freight_probability": 0.0,
+      "passenger_train_slots": [
+        "01:30",
+        "02:15"
+      ]
+    },
+    {
+      "window_id": "WIN-29-1",
+      "date": "2026-10-30",
+      "start_time": "04:00",
+      "end_time": "08:00",
+      "freight_probability": 0.24,
+      "passenger_train_slots": [
+        "05:30",
+        "06:15"
+      ]
+    },
+    {
+      "window_id": "WIN-29-2",
+      "date": "2026-10-30",
+      "start_time": "08:00",
+      "end_time": "12:00",
+      "freight_probability": 0.37,
+      "passenger_train_slots": [
+        "09:30",
+        "10:15"
+      ]
     }
   ],
   "train_timetable": [
     {
-      "train_id": "EXP-124",
-      "name": "Rajdhani Exp",
-      "arrival_time": "02:45",
-      "departure_time": "02:55",
-      "chainage_km": 1043.5
+      "train_id": "TRN-100",
+      "name": "Passenger Express 0",
+      "arrival_time": "03:49",
+      "departure_time": "04:44",
+      "chainage_km": 1053.265
+    },
+    {
+      "train_id": "TRN-101",
+      "name": "Passenger Express 1",
+      "arrival_time": "21:39",
+      "departure_time": "16:21",
+      "chainage_km": 1059.043
+    },
+    {
+      "train_id": "TRN-102",
+      "name": "Passenger Express 2",
+      "arrival_time": "04:26",
+      "departure_time": "20:23",
+      "chainage_km": 1059.728
+    },
+    {
+      "train_id": "TRN-103",
+      "name": "Passenger Express 3",
+      "arrival_time": "09:31",
+      "departure_time": "03:24",
+      "chainage_km": 1076.179
+    },
+    {
+      "train_id": "TRN-104",
+      "name": "Passenger Express 4",
+      "arrival_time": "07:33",
+      "departure_time": "18:35",
+      "chainage_km": 1071.34
+    },
+    {
+      "train_id": "TRN-105",
+      "name": "Passenger Express 5",
+      "arrival_time": "13:12",
+      "departure_time": "09:17",
+      "chainage_km": 1030.632
+    },
+    {
+      "train_id": "TRN-106",
+      "name": "Passenger Express 6",
+      "arrival_time": "18:43",
+      "departure_time": "16:00",
+      "chainage_km": 1001.258
+    },
+    {
+      "train_id": "TRN-107",
+      "name": "Passenger Express 7",
+      "arrival_time": "11:56",
+      "departure_time": "16:37",
+      "chainage_km": 1000.71
+    },
+    {
+      "train_id": "TRN-108",
+      "name": "Passenger Express 8",
+      "arrival_time": "22:08",
+      "departure_time": "17:16",
+      "chainage_km": 1073.922
+    },
+    {
+      "train_id": "TRN-109",
+      "name": "Passenger Express 9",
+      "arrival_time": "22:09",
+      "departure_time": "23:04",
+      "chainage_km": 1064.982
+    },
+    {
+      "train_id": "TRN-110",
+      "name": "Passenger Express 10",
+      "arrival_time": "06:10",
+      "departure_time": "12:20",
+      "chainage_km": 1076.636
+    },
+    {
+      "train_id": "TRN-111",
+      "name": "Passenger Express 11",
+      "arrival_time": "02:51",
+      "departure_time": "17:48",
+      "chainage_km": 1023.257
+    },
+    {
+      "train_id": "TRN-112",
+      "name": "Passenger Express 12",
+      "arrival_time": "00:16",
+      "departure_time": "01:02",
+      "chainage_km": 1022.76
+    },
+    {
+      "train_id": "TRN-113",
+      "name": "Passenger Express 13",
+      "arrival_time": "06:35",
+      "departure_time": "07:45",
+      "chainage_km": 1085.072
+    },
+    {
+      "train_id": "TRN-114",
+      "name": "Passenger Express 14",
+      "arrival_time": "16:14",
+      "departure_time": "01:45",
+      "chainage_km": 1099.881
+    },
+    {
+      "train_id": "TRN-115",
+      "name": "Passenger Express 15",
+      "arrival_time": "01:37",
+      "departure_time": "18:18",
+      "chainage_km": 1055.06
+    },
+    {
+      "train_id": "TRN-116",
+      "name": "Passenger Express 16",
+      "arrival_time": "19:42",
+      "departure_time": "01:56",
+      "chainage_km": 1052.239
+    },
+    {
+      "train_id": "TRN-117",
+      "name": "Passenger Express 17",
+      "arrival_time": "13:12",
+      "departure_time": "17:13",
+      "chainage_km": 1014.879
+    },
+    {
+      "train_id": "TRN-118",
+      "name": "Passenger Express 18",
+      "arrival_time": "05:35",
+      "departure_time": "23:04",
+      "chainage_km": 1060.41
+    },
+    {
+      "train_id": "TRN-119",
+      "name": "Passenger Express 19",
+      "arrival_time": "08:30",
+      "departure_time": "18:21",
+      "chainage_km": 1095.064
     }
   ],
   "freight_forecast": [
     {
-      "train_id": "FR-990",
-      "expected_time": "07:15",
+      "train_id": "FR-500",
+      "expected_time": "09:21",
       "buffer_mins": 120,
-      "probability": 0.7
+      "probability": 0.48
+    },
+    {
+      "train_id": "FR-501",
+      "expected_time": "10:36",
+      "buffer_mins": 120,
+      "probability": 0.53
+    },
+    {
+      "train_id": "FR-502",
+      "expected_time": "06:00",
+      "buffer_mins": 120,
+      "probability": 0.77
+    },
+    {
+      "train_id": "FR-503",
+      "expected_time": "03:35",
+      "buffer_mins": 120,
+      "probability": 0.56
+    },
+    {
+      "train_id": "FR-504",
+      "expected_time": "06:44",
+      "buffer_mins": 120,
+      "probability": 0.56
+    },
+    {
+      "train_id": "FR-505",
+      "expected_time": "02:43",
+      "buffer_mins": 120,
+      "probability": 0.8
+    },
+    {
+      "train_id": "FR-506",
+      "expected_time": "09:32",
+      "buffer_mins": 120,
+      "probability": 0.73
+    },
+    {
+      "train_id": "FR-507",
+      "expected_time": "18:45",
+      "buffer_mins": 120,
+      "probability": 0.43
+    },
+    {
+      "train_id": "FR-508",
+      "expected_time": "09:25",
+      "buffer_mins": 120,
+      "probability": 0.73
+    },
+    {
+      "train_id": "FR-509",
+      "expected_time": "19:48",
+      "buffer_mins": 120,
+      "probability": 0.59
+    },
+    {
+      "train_id": "FR-510",
+      "expected_time": "19:27",
+      "buffer_mins": 120,
+      "probability": 0.87
+    },
+    {
+      "train_id": "FR-511",
+      "expected_time": "23:21",
+      "buffer_mins": 120,
+      "probability": 0.35
+    },
+    {
+      "train_id": "FR-512",
+      "expected_time": "07:16",
+      "buffer_mins": 120,
+      "probability": 0.56
+    },
+    {
+      "train_id": "FR-513",
+      "expected_time": "07:02",
+      "buffer_mins": 120,
+      "probability": 0.47
+    },
+    {
+      "train_id": "FR-514",
+      "expected_time": "16:30",
+      "buffer_mins": 120,
+      "probability": 0.76
     }
   ]
 }
