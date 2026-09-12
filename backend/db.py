@@ -14,18 +14,21 @@ def init_db():
     Initializes the database schema, including the PostGIS extension
     and the track_segments table for spatial indexing.
     """
-    with engine.connect() as conn:
-        conn.execute(text("CREATE EXTENSION IF NOT EXISTS postgis;"))
-        conn.execute(text("""
-            CREATE TABLE IF NOT EXISTS track_segments (
-                id SERIAL PRIMARY KEY,
-                segment_id TEXT,
-                geom GEOMETRY(LINESTRING, 4326),
-                chainage_start FLOAT,
-                chainage_end FLOAT
-            );
-        """))
-        conn.commit()
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("CREATE EXTENSION IF NOT EXISTS postgis;"))
+            conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS track_segments (
+                    id SERIAL PRIMARY KEY,
+                    segment_id TEXT,
+                    geom GEOMETRY(LINESTRING, 4326),
+                    chainage_start FLOAT,
+                    chainage_end FLOAT
+                );
+            """))
+            conn.commit()
+    except Exception as e:
+        print(f"Warning: Database connection failed ({e}). Running in standalone fallback mode.")
 
 def get_spatial_overlap(task1_km: float, task2_km: float, buffer_m: float = 500.0) -> bool:
     """
