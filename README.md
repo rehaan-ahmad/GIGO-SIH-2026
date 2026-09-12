@@ -386,7 +386,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with ❤️ for Indian Railways • Smart India Hackathon 2026**
+**Built with 🤍 by Rehaan Ahmad, Priya Sharma, Virender Kr. Verma, Priyanshi Garg, Shubham Kr. Gupta & Anurag Kumar**
 
 *If the String Diagram doesn't load, check `docker-compose logs frontend` — D3.js needs the SVG namespace.*
 
